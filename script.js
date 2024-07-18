@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function page5Animation(){
     document.addEventListener("DOMContentLoaded", () => {
         gsap.registerPlugin(ScrollTrigger);
@@ -23,7 +22,6 @@ function page5Animation(){
     });
 }
 page5Animation();
-=======
 // locomotive JS for smooth scolling
 
 function loco() {
@@ -65,4 +63,3 @@ function loco() {
 
 };
 loco();
->>>>>>> 80a6c7bb2bd31c4a35acc13fa66b2e501d9372bd
