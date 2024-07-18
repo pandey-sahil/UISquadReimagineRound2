@@ -9,6 +9,19 @@ body {
   width: 100%;
 }
 
+#page1 canvas{
+  object-fit: cover;
+  object-position: center;
+  scale: 0.99;
+}
+/* #page4 {
+
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: salmon;
+} */
+
 .hidden-opacity {
   opacity: 0;
   transform: translateY(50px);
