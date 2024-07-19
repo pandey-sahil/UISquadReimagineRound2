@@ -12,6 +12,7 @@ body {
 #page1 canvas{
   object-fit: cover;
   object-position: center;
+  z-index: 22;
   scale: 0.99;
 }
 /* #page4 {

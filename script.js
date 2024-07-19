@@ -42,7 +42,7 @@ loco();
 
 // Page 1 Canvas
 function page1Canvas() {
-    const canvas = document.querySelector("#page1 canvas");
+    const canvas = document.querySelector("#page1>canvas");
     const context = canvas.getContext("2d");
 
     canvas.width = window.innerWidth;
@@ -237,13 +237,11 @@ function page1Canvas() {
         snap: "frame",
         ease: `none`,
         scrollTrigger: {
-            scrub: 0.15,
+            scrub: .5,
             trigger: `#page1`,
-            //   set start end according to preference
             start: `top top`,
-            end: `600% top`,
+            end: `250% top`,
             scroller: `#main`,
-            pin:true
         },
         onUpdate: render,
     });
@@ -276,16 +274,14 @@ function page1Canvas() {
     }
     ScrollTrigger.create({
 
-        trigger: "// object you want to pin it.",
+        trigger: "#page1",
         pin: true,
-        // markers:true,
         scroller: `#main`,
-        //   set start end according to preference
         start: `top top`,
-        end: `600% top`,
+        end: `250% top`,
     });
-};
-page1Canvas();
+}
+page1Canvas()
 
 
 // Page 5 Animation
