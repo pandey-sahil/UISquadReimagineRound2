@@ -60,38 +60,62 @@ body {
 	z-index: 90;
 }
 
-#dropleftmenu {
+#drop-down-menu {
 	position: absolute;
 	top: -100%;
-	right: 0%;
-	width: 14rem; /* Adjust width as needed */
-	height: 100%;
+	right: 100vw;
+	width: 100vw; /* Adjust width as needed */
+	height: 100vh;
 	z-index: 24;
-	border-bottom-left-radius: 2rem;
-	padding: 2rem;
-	background-color: #fecc00; /* Placeholder background color */
+	padding: 1vh 10vw;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	background-color: #febd2d;
+	background-image: url(./src/loading-plane.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-blend-mode: darken;
 	transform: translateX(100%);
 	opacity: 1;
 	transition: all ease 0.5s;
 	/* transition: transform 0.3s ease, opacity 0.3s ease; Smooth transition */
 }
-#dropleftmenu #menu-links {
-	margin-top: 4rem;
+#drop-down-menu #menu-blocks {
+	height: 100%;
+	width: 100%;
+	/* background-color: #fff; */
+	display: flex;
+	gap: 1rem;
+	padding-left: 4rem;
+}
+#drop-down-menu #menu-blocks .menu-links {
+	height: 100%;
+	width: 100%;
+	padding: 2rem;
+	/* margin-top: 4rem; */
+	/* background-color: #ffe57c; */
 	display: flex;
 	flex-direction: column;
+	align-items: baseline;
+	perspective: 1000px;
 	gap: 2rem;
 }
 
-#dropleftmenu #menu-links a {
+#drop-down-menu #menu-blocks .menu-links a {
 	text-decoration: none;
+	font-size: 1.4rem;
 	color: #000;
-}
-
-#menu-links a:hover {
-	background-color: rgba(0, 0, 0, 0.1); /* Example hover effect */
+	font-weight: 500;
+	display: inline-block;
+	transform-origin: center center;
+	background-color: #fff197;
+	padding: 0.2rem 1rem;
+	border-radius: 10rem;
 }
 
 /* menu loading animation ends */
+
 #page1 canvas {
 	object-fit: cover;
 	object-position: center;

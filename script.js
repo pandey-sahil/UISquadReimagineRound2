@@ -37,10 +37,10 @@ loco();
 
 // menu loader animation
 function menuLoadAnimation() {
-	var openMenu = document.querySelector('#load-menu');
-	var closeMenu = document.querySelector('#close-menu');
-	var plane = document.querySelector('#load-plane');
-	var dropLeftMenu = document.querySelector('#dropleftmenu');
+	const openMenu = document.querySelector('#load-menu');
+	const closeMenu = document.querySelector('#close-menu');
+	const plane = document.querySelector('#load-plane');
+	const dropDownMenu = document.querySelector('#drop-down-menu');
 
 	const tl = gsap.timeline();
 
@@ -51,10 +51,10 @@ function menuLoadAnimation() {
 			ease: 'power5.inOut',
 			duration: 2,
 		});
-		tl.to(dropLeftMenu, {
+		tl.to(dropDownMenu, {
 			duration: 0.2,
 			delay: 0.4,
-			x: '0%',
+			// x: '0%',
 			y: '100%',
 			// ease: 'power5.in',
 			onComplete: function () {
@@ -64,9 +64,9 @@ function menuLoadAnimation() {
 	});
 
 	closeMenu.addEventListener('click', function () {
-		tl.to(dropLeftMenu, {
+		tl.to(dropDownMenu, {
 			duration: 0.2,
-			x: '100%',
+			// x: '100%',
 			y: '0%',
 			ease: 'linear',
 		}).to(plane, {
@@ -83,7 +83,7 @@ function menuLoadAnimation() {
 
 	// document.addEventListener('keydown', function (event) {
 	// 	if (event.key === 'Escape') {
-	// 		tl.to(dropLeftMenu, {
+	// 		tl.to(dropDownMenu, {
 	// 			duration: 0.2,
 	// 			x: '100%',
 	// 			ease: 'linear',
@@ -99,9 +99,9 @@ function menuLoadAnimation() {
 	// 	}
 	// });
 
-	// document.querySelectorAll('#menu-links a').forEach((link) => {
+	// document.querySelectorAll('.menu-links a').forEach((link) => {
 	// 	link.addEventListener('click', function () {
-	// 		tl.to(dropLeftMenu, {
+	// 		tl.to(dropDownMenu, {
 	// 			duration: 0.2,
 	// 			x: '100%',
 	// 			ease: 'linear',
@@ -116,6 +116,20 @@ function menuLoadAnimation() {
 	// 		});
 	// 	});
 	// });
+
+	const linksarr = document.querySelectorAll(
+		'#drop-down-menu #menu-blocks .menu-links a'
+	);
+
+	linksarr.forEach((link) => {
+		link.addEventListener('mouseenter', () => {
+			gsap.to(link, { rotationX: 360, duration: 1, ease: 'power3.out' });
+		});
+
+		link.addEventListener('mouseleave', () => {
+			gsap.to(link, { rotationX: 0, duration: 1, ease: 'power3.out' });
+		});
+	});
 }
 menuLoadAnimation();
 
