@@ -180,3 +180,32 @@ footer p{
         height: 60vw;
     }
 }
+#video-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px; /* Adjust the border radius if needed */
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+#custom-cursor {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #D40511;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  pointer-events: none; /* Prevent cursor from blocking other elements */
+}
+
+#video-container {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}

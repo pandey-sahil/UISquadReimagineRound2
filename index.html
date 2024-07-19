@@ -19,10 +19,13 @@
         </div>
 
         <div id="page2" class="h-screen w-full bg-[#D40511] px-[4rem] p-[2.5rem]">
-            <div class="h-full w-full relative overflow-hidden rounded-lg bg-white">
-                <video class="h-full w-full " controls muted src="./src/videoplayback.mp4"></video>
+            <div id="video-container" class="h-full w-full relative  overflow-hidden rounded-lg bg-white">
+                <video id="video" class="h-full w-full object-cover"   src="./src/videoplayback.mp4"></video>
+                <img id="thumbnail" class="h-full w-full object-cover absolute top-0 left-0" src="./src/Designer (1).png" alt="">
+                <div id="custom-cursor" class="hidden"></div>
             </div>
         </div>
+        
 
         <div id="page3" class="h-screen py-[1.25rem] px-[1rem] md:px-[2.5rem] relative bg-[#FFCC00]">
             <h1 class="text-[7rem] leading-none tracking-tighter text-white font-semibold">We Provide Safe And

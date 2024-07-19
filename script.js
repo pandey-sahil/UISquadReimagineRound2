@@ -309,3 +309,49 @@ function page5Animation() {
 
 }
 page5Animation();
+
+
+function page2(){
+    document.addEventListener('DOMContentLoaded', () => {
+        const videoContainer = document.getElementById('video-container');
+        const video = document.getElementById('video');
+        const thumbnail = document.getElementById('thumbnail');
+        const customCursor = document.getElementById('custom-cursor');
+        
+        // Show custom cursor and hide default cursor on mouse enter
+        videoContainer.addEventListener('mouseenter', () => {
+            customCursor.classList.remove('hidden');
+            videoContainer.style.cursor = 'none';
+        });
+        
+        // Hide custom cursor and show default cursor on mouse leave
+        videoContainer.addEventListener('mouseleave', () => {
+            customCursor.classList.add('hidden');
+            videoContainer.style.cursor = 'auto';
+        });
+    
+        // Update custom cursor position
+        videoContainer.addEventListener('mousemove', (e) => {
+            const rect = videoContainer.getBoundingClientRect();
+            customCursor.style.left = `${e.clientX - rect.left - (customCursor.offsetWidth / 2)}px`;
+            customCursor.style.top = `${e.clientY - rect.top - (customCursor.offsetHeight / 2)}px`;
+        });
+    
+        // Toggle play/pause on custom cursor click
+        videoContainer.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                thumbnail.classList.add('hidden');
+                customCursor.innerHTML = `<i class="ri-pause-large-fill"></i>`;
+            } else {
+                video.pause();
+                thumbnail.classList.remove('hidden');
+                customCursor.innerHTML = `<i class="ri-play-large-fill"></i>`;
+            }
+        });
+    
+        // Initialize cursor text
+        customCursor.innerHTML = `<i class="ri-play-large-fill"></i>`;
+    });    
+}
+page2()
