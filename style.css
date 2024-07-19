@@ -9,6 +9,33 @@ body {
   width: 100%;
 }
 
+#page1 {
+position: relative;
+}
+#page1 #overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000000ef;
+  color: black;
+  /* opacity: 0; */
+  background-position: center;
+  background-color: transparent;
+  background-size: cover;
+  z-index: 200;
+}
+#page1 #overlay-road{
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: #0000008c; */
+  /* mix-blend-mode: color-burn; */
+  opacity: 0;
+  background-position: center;
+  background-color: transparent;
+  background-size: cover;
+  z-index: 99;
+}
 #page1 canvas{
   object-fit: cover;
   object-position: center;
@@ -37,25 +64,38 @@ body {
   transform: translateX(-50%, -50%);
   background: red;
   position: absolute;
-  border-radius: 50%;
+  border-radius: 50%; 
+  border: 2px dashed white;
+  border-style: dashed;
   z-index: 99;
 }
+
+
+
 #custom-cursor h1{
   font-size: 1.5rem;
   text-align: center;
   text-transform: uppercase;
   line-height: 1;
-  font-family: gilroy;
+  /* font-family: gilroy; */
   /* font-weight: 500; */
+  /* font-display: none; */
   color: #fff;
 
 }
 
 #video-container {
+  border-radius: 10rem;
   position: relative;
+  object-fit: cover;
+  object-position: top;
 }
 
+#thumbnail {
+  object-fit: cover;
+  object-position: top;
 
+}
 
 
 /* Page5 and Footer */

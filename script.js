@@ -237,13 +237,32 @@ function page1Canvas() {
         snap: "frame",
         ease: `none`,
         scrollTrigger: {
-            scrub: .5,
+            scrub: 0.5,
             trigger: `#page1`,
             start: `top top`,
             end: `250% top`,
             scroller: `#main`,
+            onUpdate: (self) => {
+                render();
+                const progress = self.progress;
+                console.log(progress)
+                var tl = gsap.timeline();
+                tl.to("#overlay-road", {
+                    opacity: progress,
+                    backgroundColor: `rgba(0, 0, 0, ${progress})`,
+                    duration: 0,
+                    overwrite: true
+                })
+                .to("#overlay-road", {
+                    backgroundImage: `url(./src/black-layout.jpeg)`,
+
+                })
+
+            }
+
+
         },
-        onUpdate: render,
+
     });
 
     images[1].onload = render;
@@ -273,15 +292,18 @@ function page1Canvas() {
         );
     }
     ScrollTrigger.create({
-
         trigger: "#page1",
         pin: true,
         scroller: `#main`,
         start: `top top`,
         end: `250% top`,
     });
-}
-page1Canvas()
+
+
+
+};
+
+page1Canvas();
 
 // Page 2 Animation
 function page2() {
@@ -290,14 +312,14 @@ function page2() {
     const thumbnail = document.querySelector('#thumbnail');
     const customCursor = document.querySelector('#custom-cursor');
 
-    videoContainer.addEventListener("mousemove", function(dets) {
+    videoContainer.addEventListener("mousemove", function (dets) {
         gsap.to(customCursor, {
             top: dets.y,
             left: dets.x
         })
     });
 
-    videoContainer.addEventListener("mouseenter", function() {
+    videoContainer.addEventListener("mouseenter", function () {
         gsap.to(customCursor, {
             duration: 0.2,
             opacity: 1,
@@ -307,7 +329,7 @@ function page2() {
 
     });
 
-    videoContainer.addEventListener("mouseleave", function() {
+    videoContainer.addEventListener("mouseleave", function () {
         gsap.to(customCursor, {
             duration: 0.2,
             opacity: 0,

@@ -13,15 +13,18 @@
 </head>
 
 <body>
-    <div id="main">
+    <div id="main" class="bg-[#EFEFEF]">
         <div id="page1" class="h-screen w-screen">
+            
+            <div id="overlay" class="h-screen w-screen text-[10rem]"> hello</div>
+            <div id="overlay-road" class="h-screen w-screen"></div>
             <canvas class="h-full w-full relative"></canvas>
         </div>
 
-        <div id="page2" class="h-screen w-full bg-[#fff] px-[4rem] p-[5rem]">
-            <div id="video-container" class="h-full w-full relative  overflow-hidden rounded-3xl bg-white">
+        <div id="page2" class="h-screen w-full px-[4rem] p-[5rem]">
+            <div id="video-container" class="h-full w-full relative  overflow-hidden bg-white">
                 <video id="video" class="h-full w-full object-cover"   src="./src/videoplayback.mp4"></video>
-                <img id="thumbnail" class="h-full w-full object-cover absolute top-0 left-0" src="./src/Designer (1).png" alt="">
+                <img id="thumbnail" class="h-full w-full object-cover absolute top-0 left-0" src="https://i.pinimg.com/564x/2d/f6/13/2df6139cff330579bc25342bf6f328a1.jpg" alt="">
                 <div id="custom-cursor" class="tracking-tighter">
                     <h1>Play</h1>
                 </div>
