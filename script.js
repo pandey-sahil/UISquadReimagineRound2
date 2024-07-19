@@ -283,6 +283,57 @@ function page1Canvas() {
 }
 page1Canvas()
 
+// Page 2 Animation
+function page2() {
+    const videoContainer = document.querySelector('#video-container');
+    const video = document.querySelector('video');
+    const thumbnail = document.querySelector('#thumbnail');
+    const customCursor = document.querySelector('#custom-cursor');
+
+    videoContainer.addEventListener("mousemove", function(dets) {
+        gsap.to(customCursor, {
+            top: dets.y,
+            left: dets.x
+        })
+    });
+
+    videoContainer.addEventListener("mouseenter", function() {
+        gsap.to(customCursor, {
+            duration: 0.2,
+            opacity: 1,
+            scale: 1,
+            transform: `translate(-50%, -50%) scale(1)` // Center and scale the cursor
+        });
+
+    });
+
+    videoContainer.addEventListener("mouseleave", function() {
+        gsap.to(customCursor, {
+            duration: 0.2,
+            opacity: 0,
+            scale: 0,
+            transform: `translate(-50%, -50%) scale(0)` // Center and scale down the cursor
+        });
+    });
+
+    videoContainer.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            thumbnail.classList.add('hidden');
+            customCursor.innerHTML = `<h1>Pause</h1>`;
+        } else {
+            video.pause();
+            thumbnail.classList.remove('hidden');
+            customCursor.innerHTML = `<h1>Play</h1>`;
+        }
+    });
+
+    // Initialize cursor text
+    customCursor.innerHTML = `<h1>Play</h1>`;
+};
+
+page2();
+
 
 // Page 5 Animation
 function page5Animation() {
@@ -305,3 +356,5 @@ function page5Animation() {
 
 }
 page5Animation();
+
+
