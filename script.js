@@ -40,19 +40,268 @@ function loco() {
 };
 loco();
 
+// Page 1 Canvas
+function page1Canvas() {
+    const canvas = document.querySelector("#page1 canvas");
+    const context = canvas.getContext("2d");
 
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+
+    window.addEventListener("resize", function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        render();
+    });
+
+    function files(index) {
+        var data = `
+./src/canvasImages/001.jpg
+./src/canvasImages/002.jpg
+./src/canvasImages/003.jpg
+./src/canvasImages/004.jpg
+./src/canvasImages/005.jpg
+./src/canvasImages/006.jpg
+./src/canvasImages/007.jpg
+./src/canvasImages/008.jpg
+./src/canvasImages/009.jpg
+./src/canvasImages/010.jpg
+./src/canvasImages/011.jpg
+./src/canvasImages/012.jpg
+./src/canvasImages/013.jpg
+./src/canvasImages/014.jpg
+./src/canvasImages/015.jpg
+./src/canvasImages/016.jpg
+./src/canvasImages/017.jpg
+./src/canvasImages/018.jpg
+./src/canvasImages/019.jpg
+./src/canvasImages/020.jpg
+./src/canvasImages/021.jpg
+./src/canvasImages/022.jpg
+./src/canvasImages/023.jpg
+./src/canvasImages/024.jpg
+./src/canvasImages/025.jpg
+./src/canvasImages/026.jpg
+./src/canvasImages/027.jpg
+./src/canvasImages/028.jpg
+./src/canvasImages/029.jpg
+./src/canvasImages/030.jpg
+./src/canvasImages/031.jpg
+./src/canvasImages/032.jpg
+./src/canvasImages/033.jpg
+./src/canvasImages/034.jpg
+./src/canvasImages/035.jpg
+./src/canvasImages/036.jpg
+./src/canvasImages/037.jpg
+./src/canvasImages/038.jpg
+./src/canvasImages/039.jpg
+./src/canvasImages/040.jpg
+./src/canvasImages/041.jpg
+./src/canvasImages/042.jpg
+./src/canvasImages/043.jpg
+./src/canvasImages/044.jpg
+./src/canvasImages/045.jpg
+./src/canvasImages/046.jpg
+./src/canvasImages/047.jpg
+./src/canvasImages/048.jpg
+./src/canvasImages/049.jpg
+./src/canvasImages/050.jpg
+./src/canvasImages/051.jpg
+./src/canvasImages/052.jpg
+./src/canvasImages/053.jpg
+./src/canvasImages/054.jpg
+./src/canvasImages/055.jpg
+./src/canvasImages/056.jpg
+./src/canvasImages/057.jpg
+./src/canvasImages/058.jpg
+./src/canvasImages/059.jpg
+./src/canvasImages/060.jpg
+./src/canvasImages/061.jpg
+./src/canvasImages/062.jpg
+./src/canvasImages/063.jpg
+./src/canvasImages/064.jpg
+./src/canvasImages/065.jpg
+./src/canvasImages/066.jpg
+./src/canvasImages/067.jpg
+./src/canvasImages/068.jpg
+./src/canvasImages/069.jpg
+./src/canvasImages/070.jpg
+./src/canvasImages/071.jpg
+./src/canvasImages/072.jpg
+./src/canvasImages/073.jpg
+./src/canvasImages/074.jpg
+./src/canvasImages/075.jpg
+./src/canvasImages/076.jpg
+./src/canvasImages/077.jpg
+./src/canvasImages/078.jpg
+./src/canvasImages/079.jpg
+./src/canvasImages/080.jpg
+./src/canvasImages/081.jpg
+./src/canvasImages/082.jpg
+./src/canvasImages/083.jpg
+./src/canvasImages/084.jpg
+./src/canvasImages/085.jpg
+./src/canvasImages/086.jpg
+./src/canvasImages/087.jpg
+./src/canvasImages/088.jpg
+./src/canvasImages/089.jpg
+./src/canvasImages/090.jpg
+./src/canvasImages/091.jpg
+./src/canvasImages/092.jpg
+./src/canvasImages/093.jpg
+./src/canvasImages/094.jpg
+./src/canvasImages/095.jpg
+./src/canvasImages/096.jpg
+./src/canvasImages/097.jpg
+./src/canvasImages/098.jpg
+./src/canvasImages/099.jpg
+./src/canvasImages/100.jpg
+./src/canvasImages/101.jpg
+./src/canvasImages/102.jpg
+./src/canvasImages/103.jpg
+./src/canvasImages/104.jpg
+./src/canvasImages/105.jpg
+./src/canvasImages/106.jpg
+./src/canvasImages/107.jpg
+./src/canvasImages/108.jpg
+./src/canvasImages/109.jpg
+./src/canvasImages/110.jpg
+./src/canvasImages/111.jpg
+./src/canvasImages/112.jpg
+./src/canvasImages/113.jpg
+./src/canvasImages/114.jpg
+./src/canvasImages/115.jpg
+./src/canvasImages/116.jpg
+./src/canvasImages/117.jpg
+./src/canvasImages/118.jpg
+./src/canvasImages/119.jpg
+./src/canvasImages/120.jpg
+./src/canvasImages/121.jpg
+./src/canvasImages/122.jpg
+./src/canvasImages/123.jpg
+./src/canvasImages/124.jpg
+./src/canvasImages/125.jpg
+./src/canvasImages/126.jpg
+./src/canvasImages/127.jpg
+./src/canvasImages/128.jpg
+./src/canvasImages/129.jpg
+./src/canvasImages/130.jpg
+./src/canvasImages/131.jpg
+./src/canvasImages/132.jpg
+./src/canvasImages/133.jpg
+./src/canvasImages/134.jpg
+./src/canvasImages/135.jpg
+./src/canvasImages/136.jpg
+./src/canvasImages/137.jpg
+./src/canvasImages/138.jpg
+./src/canvasImages/139.jpg
+./src/canvasImages/140.jpg
+./src/canvasImages/141.jpg
+./src/canvasImages/142.jpg
+./src/canvasImages/143.jpg
+./src/canvasImages/144.jpg
+./src/canvasImages/145.jpg
+./src/canvasImages/146.jpg
+./src/canvasImages/147.jpg
+./src/canvasImages/148.jpg
+./src/canvasImages/149.jpg
+./src/canvasImages/150.jpg
+./src/canvasImages/151.jpg
+./src/canvasImages/152.jpg
+./src/canvasImages/153.jpg
+./src/canvasImages/154.jpg
+./src/canvasImages/155.jpg
+./src/canvasImages/156.jpg
+./src/canvasImages/157.jpg
+./src/canvasImages/158.jpg
+ `;
+        return data.split("\n")[index];
+    }
+
+    const frameCount = 158;
+
+    const images = [];
+    const imageSeq = {
+        frame: 1,
+    };
+
+    for (let i = 0; i < frameCount; i++) {
+        const img = new Image();
+        img.src = files(i);
+        images.push(img);
+    }
+
+    gsap.to(imageSeq, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: `none`,
+        scrollTrigger: {
+            scrub: 0.15,
+            trigger: `#page1`,
+            //   set start end according to preference
+            start: `top top`,
+            end: `600% top`,
+            scroller: `#main`,
+            pin:true
+        },
+        onUpdate: render,
+    });
+
+    images[1].onload = render;
+
+    function render() {
+        scaleImage(images[imageSeq.frame], context);
+    }
+
+    function scaleImage(img, ctx) {
+        var canvas = ctx.canvas;
+        var hRatio = canvas.width / img.width;
+        var vRatio = canvas.height / img.height;
+        var ratio = Math.max(hRatio, vRatio);
+        var centerShift_x = (canvas.width - img.width * ratio) / 2;
+        var centerShift_y = (canvas.height - img.height * ratio) / 2;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(
+            img,
+            0,
+            0,
+            img.width,
+            img.height,
+            centerShift_x,
+            centerShift_y,
+            img.width * ratio,
+            img.height * ratio
+        );
+    }
+    ScrollTrigger.create({
+
+        trigger: "// object you want to pin it.",
+        pin: true,
+        // markers:true,
+        scroller: `#main`,
+        //   set start end according to preference
+        start: `top top`,
+        end: `600% top`,
+    });
+};
+page1Canvas();
+
+
+// Page 5 Animation
 function page5Animation() {
     gsap.from("#container", {
         opacity: 0,
-        y: 100,
+        y: 200,
         duration: 1,
-        delay:2,
+        // delay:2,
         scrollTrigger: {
             trigger: "#container",
             start: 'top 100%',
-            end: 'top 50%', 
+            end: 'top 20%',
             scrub: true,
-            scroller:"#main",
+
+            scroller: "#main",
             markers: true,
         }
     }
