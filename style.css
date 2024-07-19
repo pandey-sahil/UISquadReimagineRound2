@@ -8,7 +8,90 @@ body {
 	height: 100%;
 	width: 100%;
 }
+/* menu loading animation starts */
+#menu-loading {
+	height: 10vh;
+	width: 100%;
+	/* overflow: hidden; */
+	/* position: relative; */
+}
+#menu-loading #nav {
+	height: 100%;
+	width: 100%;
+	padding: 0 10vw;
+	background: linear-gradient(to right, #fecc00 60%, #fff);
+	/* background-color: #fecc00; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#nav img {
+	height: 18vh;
+}
+#load-menu,
+#close-menu {
+	color: #000;
+	text-decoration: none;
+	font-size: 4vh;
+	border: 2px solid #000;
+	border-radius: 4rem;
+	padding: 0.1rem 0.5rem;
+	opacity: 0.7;
+	transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+	background: none;
+	cursor: pointer;
+}
+#load-menu:hover,
+#close-menu:hover {
+	opacity: 1;
+}
+#load-menu:active,
+#close-menu:active {
+	color: rgb(137, 137, 137);
+	scale: 0.9;
+}
 
+#load-plane {
+	position: absolute;
+	scale: 2;
+	transform: translate(-50%, -50%);
+	top: -40%;
+	left: 200%;
+	z-index: 90;
+}
+
+#dropleftmenu {
+	position: absolute;
+	top: -100%;
+	right: 0%;
+	width: 14rem; /* Adjust width as needed */
+	height: 100%;
+	z-index: 24;
+	border-bottom-left-radius: 2rem;
+	padding: 2rem;
+	background-color: #fecc00; /* Placeholder background color */
+	transform: translateX(100%);
+	opacity: 1;
+	transition: all ease 0.5s;
+	/* transition: transform 0.3s ease, opacity 0.3s ease; Smooth transition */
+}
+#dropleftmenu #menu-links {
+	margin-top: 4rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+#dropleftmenu #menu-links a {
+	text-decoration: none;
+	color: #000;
+}
+
+#menu-links a:hover {
+	background-color: rgba(0, 0, 0, 0.1); /* Example hover effect */
+}
+
+/* menu loading animation ends */
 #page1 canvas {
 	object-fit: cover;
 	object-position: center;

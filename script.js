@@ -1,62 +1,140 @@
-
 // locomotive JS for smooth scolling
-
 function loco() {
+	gsap.registerPlugin(ScrollTrigger);
 
-    gsap.registerPlugin(ScrollTrigger);
+	const locoScroll = new LocomotiveScroll({
+		el: document.querySelector('#main'),
+		smooth: true,
 
-    const locoScroll = new LocomotiveScroll({
-        el: document.querySelector("#main"),
-        smooth: true,
+		// for tablet smooth
+		tablet: { smooth: true },
+		// for mobile
+		smartphone: { smooth: true },
+	});
+	locoScroll.on('scroll', ScrollTrigger.update);
 
-        // for tablet smooth
-        tablet: { smooth: true },
-        // for mobile
-        smartphone: { smooth: true }
-    });
-    locoScroll.on("scroll", ScrollTrigger.update);
+	ScrollTrigger.scrollerProxy('#main', {
+		scrollTop(value) {
+			return arguments.length
+				? locoScroll.scrollTo(value, 0, 0)
+				: locoScroll.scroll.instance.scroll.y;
+		},
+		getBoundingClientRect() {
+			return {
+				top: 0,
+				left: 0,
+				width: window.innerWidth,
+				height: window.innerHeight,
+			};
+		},
+	});
 
-    ScrollTrigger.scrollerProxy("#main", {
-        scrollTop(value) {
-            return arguments.length
-                ? locoScroll.scrollTo(value, 0, 0)
-                : locoScroll.scroll.instance.scroll.y;
-        },
-        getBoundingClientRect() {
-            return {
-                top: 0,
-                left: 0,
-                width: window.innerWidth,
-                height: window.innerHeight
-            };
-        }
+	ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
 
-    });
-
-    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-
-    ScrollTrigger.refresh();
-
-};
+	ScrollTrigger.refresh();
+}
 loco();
+
+// menu loader animation
+function menuLoadAnimation() {
+	var openMenu = document.querySelector('#load-menu');
+	var closeMenu = document.querySelector('#close-menu');
+	var plane = document.querySelector('#load-plane');
+	var dropLeftMenu = document.querySelector('#dropleftmenu');
+
+	const tl = gsap.timeline();
+
+	openMenu.addEventListener('click', function () {
+		gsap.to(plane, {
+			x: -window.innerWidth * 3,
+			y: window.innerHeight * 2,
+			ease: 'power5.inOut',
+			duration: 2,
+		});
+		tl.to(dropLeftMenu, {
+			duration: 0.2,
+			delay: 0.4,
+			x: '0%',
+			y: '100%',
+			// ease: 'power5.in',
+			onComplete: function () {
+				gsap.to(plane, { delay: 1, opacity: 0 });
+			},
+		});
+	});
+
+	closeMenu.addEventListener('click', function () {
+		tl.to(dropLeftMenu, {
+			duration: 0.2,
+			x: '100%',
+			y: '0%',
+			ease: 'linear',
+		}).to(plane, {
+			duration: 1,
+			// x: window.innerWidth * 2, y: -window.innerHeight * 4,
+			// x: window.innerHeight, y: -window.innerWidth,
+			x: '100%',
+			y: '-220%',
+			onComplete: function () {
+				gsap.to(plane, { opacity: 1 });
+			},
+		});
+	});
+
+	// document.addEventListener('keydown', function (event) {
+	// 	if (event.key === 'Escape') {
+	// 		tl.to(dropLeftMenu, {
+	// 			duration: 0.2,
+	// 			x: '100%',
+	// 			ease: 'linear',
+	// 			opacity: 0,
+	// 		}).to(plane, {
+	// 			duration: 0.1,
+	// 			x: window.innerWidth * 2,
+	// 			y: -window.innerHeight * 4,
+	// 			onComplete: function () {
+	// 				gsap.to(plane, { opacity: 1 });
+	// 			},
+	// 		});
+	// 	}
+	// });
+
+	// document.querySelectorAll('#menu-links a').forEach((link) => {
+	// 	link.addEventListener('click', function () {
+	// 		tl.to(dropLeftMenu, {
+	// 			duration: 0.2,
+	// 			x: '100%',
+	// 			ease: 'linear',
+	// 			opacity: 0,
+	// 		}).to(plane, {
+	// 			duration: 0.1,
+	// 			x: window.innerWidth * 2,
+	// 			y: -window.innerHeight * 4,
+	// 			onComplete: function () {
+	// 				gsap.to(plane, { opacity: 1 });
+	// 			},
+	// 		});
+	// 	});
+	// });
+}
+menuLoadAnimation();
 
 // Page 1 Canvas
 function page1Canvas() {
-    const canvas = document.querySelector("#page1>canvas");
-    const context = canvas.getContext("2d");
+	const canvas = document.querySelector('#page1>canvas');
+	const context = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 
+	window.addEventListener('resize', function () {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		render();
+	});
 
-    window.addEventListener("resize", function () {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        render();
-    });
-
-    function files(index) {
-        var data = `
+	function files(index) {
+		var data = `
 ./src/canvasImages/001.jpg
 ./src/canvasImages/002.jpg
 ./src/canvasImages/003.jpg
@@ -216,145 +294,138 @@ function page1Canvas() {
 ./src/canvasImages/157.jpg
 ./src/canvasImages/158.jpg
  `;
-        return data.split("\n")[index];
-    }
+		return data.split('\n')[index];
+	}
 
-    const frameCount = 158;
+	const frameCount = 158;
 
-    const images = [];
-    const imageSeq = {
-        frame: 1,
-    };
+	const images = [];
+	const imageSeq = {
+		frame: 1,
+	};
 
-    for (let i = 0; i < frameCount; i++) {
-        const img = new Image();
-        img.src = files(i);
-        images.push(img);
-    }
+	for (let i = 0; i < frameCount; i++) {
+		const img = new Image();
+		img.src = files(i);
+		images.push(img);
+	}
 
-    gsap.to(imageSeq, {
-        frame: frameCount - 1,
-        snap: "frame",
-        ease: `none`,
-        scrollTrigger: {
-            scrub: .5,
-            trigger: `#page1`,
-            start: `top top`,
-            end: `250% top`,
-            scroller: `#main`,
-        },
-        onUpdate: render,
-    });
+	gsap.to(imageSeq, {
+		frame: frameCount - 1,
+		snap: 'frame',
+		ease: `none`,
+		scrollTrigger: {
+			scrub: 0.5,
+			trigger: `#page1`,
+			start: `top top`,
+			end: `250% top`,
+			scroller: `#main`,
+		},
+		onUpdate: render,
+	});
 
-    images[1].onload = render;
+	images[1].onload = render;
 
-    function render() {
-        scaleImage(images[imageSeq.frame], context);
-    }
+	function render() {
+		scaleImage(images[imageSeq.frame], context);
+	}
 
-    function scaleImage(img, ctx) {
-        var canvas = ctx.canvas;
-        var hRatio = canvas.width / img.width;
-        var vRatio = canvas.height / img.height;
-        var ratio = Math.max(hRatio, vRatio);
-        var centerShift_x = (canvas.width - img.width * ratio) / 2;
-        var centerShift_y = (canvas.height - img.height * ratio) / 2;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(
-            img,
-            0,
-            0,
-            img.width,
-            img.height,
-            centerShift_x,
-            centerShift_y,
-            img.width * ratio,
-            img.height * ratio
-        );
-    }
-    ScrollTrigger.create({
-
-        trigger: "#page1",
-        pin: true,
-        scroller: `#main`,
-        start: `top top`,
-        end: `250% top`,
-    });
+	function scaleImage(img, ctx) {
+		var canvas = ctx.canvas;
+		var hRatio = canvas.width / img.width;
+		var vRatio = canvas.height / img.height;
+		var ratio = Math.max(hRatio, vRatio);
+		var centerShift_x = (canvas.width - img.width * ratio) / 2;
+		var centerShift_y = (canvas.height - img.height * ratio) / 2;
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.drawImage(
+			img,
+			0,
+			0,
+			img.width,
+			img.height,
+			centerShift_x,
+			centerShift_y,
+			img.width * ratio,
+			img.height * ratio
+		);
+	}
+	ScrollTrigger.create({
+		trigger: '#page1',
+		pin: true,
+		scroller: `#main`,
+		start: `top top`,
+		end: `250% top`,
+	});
 }
-page1Canvas()
+page1Canvas();
 
 // Page 2 Animation
 function page2() {
-    const videoContainer = document.querySelector('#video-container');
-    const video = document.querySelector('video');
-    const thumbnail = document.querySelector('#thumbnail');
-    const customCursor = document.querySelector('#custom-cursor');
+	const videoContainer = document.querySelector('#video-container');
+	const video = document.querySelector('video');
+	const thumbnail = document.querySelector('#thumbnail');
+	const customCursor = document.querySelector('#custom-cursor');
 
-    videoContainer.addEventListener("mousemove", function(dets) {
-        gsap.to(customCursor, {
-            top: dets.y,
-            left: dets.x
-        })
-    });
+	videoContainer.addEventListener('mousemove', function (dets) {
+		gsap.to(customCursor, {
+			top: dets.y,
+			left: dets.x,
+		});
+	});
 
-    videoContainer.addEventListener("mouseenter", function() {
-        gsap.to(customCursor, {
-            duration: 0.2,
-            opacity: 1,
-            scale: 1,
-            transform: `translate(-50%, -50%) scale(1)` // Center and scale the cursor
-        });
+	videoContainer.addEventListener('mouseenter', function () {
+		gsap.to(customCursor, {
+			duration: 0.2,
+			opacity: 1,
+			scale: 1,
+			transform: `translate(-50%, -50%) scale(1)`, // Center and scale the cursor
+		});
+	});
 
-    });
+	videoContainer.addEventListener('mouseleave', function () {
+		gsap.to(customCursor, {
+			duration: 0.2,
+			opacity: 0,
+			scale: 0,
+			transform: `translate(-50%, -50%) scale(0)`, // Center and scale down the cursor
+		});
+	});
 
-    videoContainer.addEventListener("mouseleave", function() {
-        gsap.to(customCursor, {
-            duration: 0.2,
-            opacity: 0,
-            scale: 0,
-            transform: `translate(-50%, -50%) scale(0)` // Center and scale down the cursor
-        });
-    });
+	videoContainer.addEventListener('click', () => {
+		if (video.paused) {
+			video.play();
+			thumbnail.classList.add('hidden');
+			customCursor.innerHTML = `<h1>Pause</h1>`;
+		} else {
+			video.pause();
+			thumbnail.classList.remove('hidden');
+			customCursor.innerHTML = `<h1>Play</h1>`;
+		}
+	});
 
-    videoContainer.addEventListener('click', () => {
-        if (video.paused) {
-            video.play();
-            thumbnail.classList.add('hidden');
-            customCursor.innerHTML = `<h1>Pause</h1>`;
-        } else {
-            video.pause();
-            thumbnail.classList.remove('hidden');
-            customCursor.innerHTML = `<h1>Play</h1>`;
-        }
-    });
-
-    // Initialize cursor text
-    customCursor.innerHTML = `<h1>Play</h1>`;
-};
+	// Initialize cursor text
+	customCursor.innerHTML = `<h1>Play</h1>`;
+}
 
 page2();
 
-
 // Page 5 Animation
 function page5Animation() {
-    gsap.from("#container", {
-        opacity: 0,
-        y: 200,
-        duration: 1,
-        // delay:2,
-        scrollTrigger: {
-            trigger: "#container",
-            start: 'top 100%',
-            end: 'top 20%',
-            scrub: true,
+	gsap.from('#container', {
+		opacity: 0,
+		y: 200,
+		duration: 1,
+		// delay:2,
+		scrollTrigger: {
+			trigger: '#container',
+			start: 'top 100%',
+			end: 'top 20%',
+			scrub: true,
 
-            scroller: "#main",
-            markers: true,
-        }
-    }
-    )
-
+			scroller: '#main',
+			markers: true,
+		},
+	});
 }
 page5Animation();
-
-

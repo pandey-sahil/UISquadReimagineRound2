@@ -1,150 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>DHL Home</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+		<link
+			rel="shortcut icon"
+			href="https://media0.giphy.com/media/VehMtgVvGjTUUHnLnD/giphy.gif"
+			type="image/x-icon" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+			rel="stylesheet" />
+		<link rel="stylesheet" href="style.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DHL Home</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
-    <link rel="shortcut icon" href="https://media0.giphy.com/media/VehMtgVvGjTUUHnLnD/giphy.gif" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+	<body>
+		<!-- adding menu loading feature -->
+		<div id="menu-loading">
+			<div id="nav">
+				<img src="./src/DHL-Logo.wine.svg" alt="DHL Logo" />
+				<button id="load-menu">
+					<i class="ri-menu-line"></i>
+				</button>
+			</div>
+			<img id="load-plane" src="./src/loading-plane.png" />
 
-<body>
+			<div id="dropleftmenu">
+				<button id="close-menu"><i class="ri-close-large-fill"></i></button>
+				<div id="menu-links">
+					<a href="#">Home</a>
+					<a href="#">Search</a>
+					<a href="#">About</a>
+					<a href="#">Track</a>
+					<a href="#">Ship</a>
+					<a href="#">Contact</a>
+					<a href="#">Customer Service</a>
+					<a href="#">Customer Portal Logins</a>
+				</div>
+			</div>
+		</div>
 
-<!-- adding menu loading feature -->
+		<!-- main -->
+		<div id="main">
+			<div id="page1" class="h-screen w-screen">
+				<canvas class="h-full w-full relative"></canvas>
+			</div>
 
-    <div id="main">
-        <div id="page1" class="h-screen w-screen">
-            <canvas class="h-full w-full relative"></canvas>
-        </div>
+			<div id="page2" class="h-screen w-full bg-[#fff] px-[4rem] p-[5rem]">
+				<div
+					id="video-container"
+					class="h-full w-full relative overflow-hidden rounded-3xl bg-white">
+					<video
+						id="video"
+						class="h-full w-full object-cover"
+						src="./src/videoplayback.mp4"></video>
+					<img
+						id="thumbnail"
+						class="h-full w-full object-cover absolute top-0 left-0"
+						src="./src/Designer (1).png"
+						alt="" />
+					<div id="custom-cursor" class="tracking-tighter">
+						<h1>Play</h1>
+					</div>
+				</div>
+			</div>
 
-        <div id="page2" class="h-screen w-full bg-[#fff] px-[4rem] p-[5rem]">
-            <div id="video-container" class="h-full w-full relative  overflow-hidden rounded-3xl bg-white">
-                <video id="video" class="h-full w-full object-cover"   src="./src/videoplayback.mp4"></video>
-                <img id="thumbnail" class="h-full w-full object-cover absolute top-0 left-0" src="./src/Designer (1).png" alt="">
-                <div id="custom-cursor" class="tracking-tighter">
-                    <h1>Play</h1>
-                </div>
-            </div>
-        </div>
-        
+			<div
+				id="page3"
+				class="h-screen py-[1.25rem] px-[1rem] md:px-[2.5rem] relative bg-[#FFCC00]">
+				<h1
+					class="text-[7rem] leading-none tracking-tighter text-white font-semibold">
+					We Provide Safe And <br />Reliable Cargo Solutions
+				</h1>
+				<div
+					class="flex flex-col gap-5 md:flex-row items-center pt-[3rem] justify-between w-full">
+					<div
+						class="card shadow-sm shadow-black h-[24rem] w-full flex flex-col justify-between overflow-hidden bg-white rounded-lg">
+						<div
+							class="flex items-center relative flex-col h-1/2 w-full justify-between">
+							<img
+								class="w-[2.5rem] absolute top-[0.5rem] left-[8rem]"
+								src="https://uploads-ssl.webflow.com/63ede56f5ceca72669fcaced/63f1e63aa2038a66aa734e03_Group.png"
+								alt="" />
+							<img
+								class="w-[15rem] absolute left-[-1.5vw] top-[-1.5vw]"
+								src="./src/final truck.png"
+								alt="" />
+							<img
+								class="w-[4rem] absolute -left-[0.75rem] top-[5rem]"
+								src="https://uploads-ssl.webflow.com/63ede56f5ceca72669fcaced/63f1e63a69cfc073114509e6_cubard-ban.png"
+								alt="" />
+						</div>
+						<div
+							class="flex px-[1.5rem] pb-[1.5rem] items-center justify-between">
+							<h1
+								class="font-semibold text-[2rem] tracking-tighter leading-tight">
+								Road <br />
+								Transportation
+							</h1>
+							<div
+								class="py-[0.30rem] px-[0.80rem] rounded-full border-[0.0625rem] bg-transparent border-black">
+								<h2
+									class="text-[2rem] overflow-hidden flex items-center justify-center">
+									<i class="ri-arrow-right-up-line"></i>
+								</h2>
+							</div>
+						</div>
+					</div>
+					<div
+						class="card shadow-sm shadow-black h-[24rem] w-full flex flex-col justify-between overflow-hidden bg-white rounded-lg">
+						<div
+							class="flex items-center relative flex-col h-1/2 w-full justify-between">
+							<img
+								class="w-[15rem] absolute left-[-1.5vw] top-[-1.5vw]"
+								src="./src/ship.png"
+								alt="" />
+						</div>
+						<div
+							class="flex px-[1.5rem] pb-[1.5rem] items-center justify-between">
+							<h1
+								class="font-semibold text-[2rem] tracking-tighter leading-tight">
+								Ocean <br />
+								Freight
+							</h1>
+							<div
+								class="py-[0.30rem] px-[0.80rem] rounded-full border-[0.0625rem] bg-transparent border-black">
+								<h2
+									class="text-[2rem] overflow-hidden flex items-center justify-center">
+									<i class="ri-arrow-right-up-line"></i>
+								</h2>
+							</div>
+						</div>
+					</div>
+					<div
+						class="card shadow-sm shadow-black h-[24rem] w-full flex flex-col justify-between overflow-hidden bg-white rounded-lg">
+						<div
+							class="flex items-center relative flex-col h-1/2 w-full justify-between">
+							<img
+								class="w-[15rem] absolute left-[-1.5vw] top-[-1.5vw]"
+								src="./src/final plane.png"
+								alt="" />
+						</div>
+						<div
+							class="flex px-[1.5rem] pb-[1.5rem] items-center justify-between">
+							<h1
+								class="font-semibold text-[2rem] tracking-tighter leading-tight">
+								Air <br />Freight
+							</h1>
+							<div
+								class="py-[0.30rem] px-[0.80rem] rounded-full border-[0.0625rem] bg-transparent border-black">
+								<h2
+									class="text-[2rem] overflow-hidden flex items-center justify-center">
+									<i class="ri-arrow-right-up-line"></i>
+								</h2>
+							</div>
+						</div>
+					</div>
+					<div
+						class="card shadow-sm shadow-black h-[24rem] w-full flex flex-col justify-between overflow-hidden bg-white rounded-lg">
+						<div
+							class="flex items-center relative flex-col h-1/2 w-full justify-between">
+							<img
+								class="w-[14rem] absolute left-[-1.5vw] top-[-1.5vw]"
+								src="./src/drone.png"
+								alt="" />
+						</div>
+						<div
+							class="flex px-[1.5rem] pb-[1.5rem] items-center justify-between">
+							<h1
+								class="font-semibold text-[2rem] tracking-tighter leading-tight">
+								Drone <br />Parcel Delivery
+							</h1>
+							<div
+								class="py-[0.30rem] px-[0.80rem] rounded-full border-[0.0625rem] bg-transparent border-black">
+								<h2
+									class="text-[2rem] overflow-hidden flex items-center justify-center">
+									<i class="ri-arrow-right-up-line"></i>
+								</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="page5 flex items-center justify-center min-h-screen bg-gray-100">
+				<div
+					id="container"
+					class="w-full max-w-xl p-8 bg-white rounded-lg shadow-lg text-center">
+					<h1 class="text-4xl flex justify-start font-bold mb-4">
+						Track Your Shipment Now
+					</h1>
+					<form>
+						<input
+							type="text"
+							placeholder="Tracking Number(s)"
+							class="w-80 px-4 py-2 mb-4 border border-zinc-400 flex justify-start rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+							required />
+						<button
+							type="submit"
+							class="btn-animate w-40 px-4 py-2 text-black bg-zinc-300 pl-7 flex justify-start align-center rounded-lg hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+							TRACK NOW
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="waves">
+					<div class="wave" id="wave-1"></div>
+					<div class="wave" id="wave-2"></div>
+					<div class="wave" id="wave-3"></div>
+					<div class="wave" id="wave-4"></div>
+				</div>
+				<footer>
+					<ul class="social-icon">
+						<li>
+							<a href="#"><i class="ri-facebook-box-fill"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="ri-twitter-fill"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="ri-linkedin-box-fill"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="ri-instagram-fill"></i></a>
+						</li>
+					</ul>
+					<ul class="menu">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">about</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Team</a></li>
+						<li><a href="#">contact</a></li>
+					</ul>
+					<p>2024 © - all rights reserved</p>
+				</footer>
+			</div>
+		</div>
 
-        <div id="page3" class="h-screen py-[1.25rem] px-[1rem] md:px-[2.5rem] relative bg-[#FFCC00]">
-            <h1 class="text-[7rem] leading-none tracking-tighter text-white font-semibold">We Provide Safe And
-                <br>Reliable Cargo Solutions
-            </h1>
-            <div class="flex flex-col gap-5 md:flex-row items-center pt-[3rem] justify-between w-full">
-                <div class="card shadow-sm shadow-black h-[24rem] w-full flex flex-col justify-between overflow-hidden bg-white rounded-lg">
-                    <div class="flex items-center relative flex-col h-1/2 w-full justify-between">
-                        <img class="w-[2.5rem] absolute top-[0.5rem] left-[8rem]"
-                            src="https://uploads-ssl.webflow.com/63ede56f5ceca72669fcaced/63f1e63aa2038a66aa734e03_Group.png"
-                            alt="">
-                        <img class="w-[15rem] absolute left-[-1.5vw] top-[-1.5vw]" src="./src/final truck.png" alt="">
-                        <img class="w-[4rem] absolute -left-[0.75rem] top-[5rem]"
-                            src="https://uploads-ssl.webflow.com/63ede56f5ceca72669fcaced/63f1e63a69cfc073114509e6_cubard-ban.png"
-                            alt="">
-                    </div>
-                    <div class="flex px-[1.5rem] pb-[1.5rem] items-center justify-between">
-                        <h1 class="font-semibold text-[2rem] tracking-tighter leading-tight">Road <br> Transportation
-                        </h1>
-                        <div class="py-[0.30rem] px-[0.80rem]  rounded-full border-[0.0625rem] bg-transparent border-black">
-                            <h2 class="text-[2rem] overflow-hidden flex items-center justify-center"><i class="ri-arrow-right-up-line"></i></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="card shadow-sm shadow-black h-[24rem] w-full flex flex-col justify-between overflow-hidden bg-white rounded-lg">
-                    <div class="flex items-center relative flex-col h-1/2 w-full justify-between">
-                        <img class="w-[15rem] absolute left-[-1.5vw] top-[-1.5vw]" src="./src/ship.png" alt="">
-                    </div>
-                    <div class="flex px-[1.5rem] pb-[1.5rem] items-center justify-between">
-                        <h1 class="font-semibold text-[2rem] tracking-tighter leading-tight">Ocean <br> Freight</h1>
-                        <div class="py-[0.30rem] px-[0.80rem]  rounded-full border-[0.0625rem] bg-transparent border-black">
-                            <h2 class="text-[2rem] overflow-hidden flex items-center justify-center"><i class="ri-arrow-right-up-line"></i></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="card shadow-sm shadow-black h-[24rem] w-full flex flex-col justify-between overflow-hidden bg-white rounded-lg">
-                    <div class="flex items-center relative flex-col h-1/2 w-full justify-between">
-                        <img class="w-[15rem] absolute left-[-1.5vw] top-[-1.5vw]" src="./src/final plane.png" alt="">
-                    </div>
-                    <div class="flex px-[1.5rem] pb-[1.5rem] items-center justify-between">
-                        <h1 class="font-semibold text-[2rem] tracking-tighter leading-tight">Air <br>Freight</h1>
-                        <div
-                            class="py-[0.30rem] px-[0.80rem]  rounded-full border-[0.0625rem] bg-transparent border-black">
-                            <h2 class="text-[2rem] overflow-hidden flex items-center justify-center"><i class="ri-arrow-right-up-line"></i></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="card shadow-sm shadow-black h-[24rem] w-full flex flex-col justify-between overflow-hidden bg-white rounded-lg">
-                    <div class="flex items-center relative flex-col h-1/2 w-full justify-between">
-                        <img class="w-[14rem] absolute left-[-1.5vw] top-[-1.5vw]" src="./src/drone.png" alt="">
-                    </div>
-                    <div class="flex px-[1.5rem] pb-[1.5rem] items-center justify-between">
-                        <h1 class="font-semibold text-[2rem] tracking-tighter leading-tight">Drone <br>Parcel Delivery
-                        </h1>
-                        <div class="py-[0.30rem] px-[0.80rem]  rounded-full border-[0.0625rem] bg-transparent border-black">
-                            <h2 class="text-[2rem] overflow-hidden flex items-center justify-center"><i class="ri-arrow-right-up-line"></i></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="page5 flex items-center justify-center min-h-screen bg-gray-100 ">
-            <div id="container" class="w-full max-w-xl p-8 bg-white rounded-lg shadow-lg text-center">
-                <h1 class="text-4xl flex justify-start font-bold mb-4">Track Your Shipment Now</h1>
-                <form>
-                    <input type="text" placeholder="Tracking Number(s)"
-                        class="w-80 px-4 py-2 mb-4 border border-zinc-400 flex justify-start rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        required>
-                    <button type="submit"
-                        class="btn-animate w-40 px-4 py-2 text-black bg-zinc-300 pl-7  flex justify-start align-center rounded-lg hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">TRACK
-                        NOW</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="waves">
-                <div class="wave" id="wave-1"></div>
-                <div class="wave" id="wave-2"></div>
-                <div class="wave" id="wave-3"></div>
-                <div class="wave" id="wave-4"></div>
-            </div>
-            <footer>
-                <ul class="social-icon">
-                    <li><a href="#"><i class="ri-facebook-box-fill"></i></i></a></li>
-                    <li><a href="#"><i class="ri-twitter-fill"></i></i></a></li>
-                    <li><a href="#"><i class="ri-linkedin-box-fill"></i></i></a></li>
-                    <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
-                </ul>
-                <ul class="menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">about</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="#">contact</a></li>
-                </ul>
-                <p>2024 © - all rights reserved</p>
-            </footer>
-        </div>
-    </div>
+		<!-- Locomotive cdn -->
+		<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 
-    <!-- Locomotive cdn -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+		<!-- GSAP and Scroll Trigger cdn -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+			integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"></script>
 
-    <!-- GSAP and Scroll Trigger cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
-        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="script.js"></script>
-</body>
-
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+			integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"></script>
+		<script src="script.js"></script>
+	</body>
 </html>
 ..
