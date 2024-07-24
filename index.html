@@ -19,7 +19,11 @@
 	</head>
 
 	<body>
-		<!-- adding menu loading feature -->
+	
+		<!-- main -->
+		<div id="main">
+			<div class="h-[5rem] bg-slate-800">
+				<!-- adding menu loading feature -->
 		<div id="menu-loading">
 			<div id="nav">
 				<img src="./src/DHL-Logo.wine.svg" alt="DHL Logo" />
@@ -66,27 +70,42 @@
 			</div>
 		</div>
 
-		<!-- main -->
-		<div id="main">
-			<div id="page1" class="h-screen w-screen">
-				<canvas class="h-full w-full relative"></canvas>
+		
+			</div>
+			<div id="page1">
+				<div id="page1Text" class="px-[5rem] relative pt-[3rem] tracking-tighter">
+					<h1 class="text-[6rem] leading-none text-left relative">Delivering</h1>
+					<h1 class="text-[6rem] leading-none text-center relative">Excellence</h1>
+					<h1 class="text-[6rem] leading-none ml-[12rem] text-center relative">Across</h1>
+					<h1 class="text-[6rem] leading-none ml-[10rem] text-right relative">the Globe</h1>
+
+				</div>
+                <div id="overlay">
+					<canvas class="h-full w-full relative"></canvas>
+					<div id="canvasOverlay"></div>
+				</div>
 			</div>
 
-			<div id="page2" class="h-screen w-full bg-[#fff] px-[4rem] p-[5rem]">
+			<div id="page2" class="h-screen w-full bg-[#fff]">
 				<div
 					id="video-container"
-					class="h-full w-full relative overflow-hidden rounded-3xl bg-white">
+					class="h-full w-full relative overflow-hidden bg-white">
 					<video
 						id="video"
 						class="h-full w-full object-cover"
 						src="./src/videoplayback.mp4"></video>
-					<img
-						id="thumbnail"
-						class="h-full w-full object-cover absolute top-0 left-0"
-						src="./src/Designer (1).png"
-						alt="" />
+
 					<div id="custom-cursor" class="tracking-tighter">
-						<h1>Play</h1>
+						<!-- <h1>Play</h1> -->
+						<svg id="svgmasktrasfdig" version="1.1" viewBox="0 0 500 500" height="500" width="500">
+
+							<g id="blobvideomasktrasfdig" />
+							<clipPath id="svgPathtrasfdig">
+							  <path class="formatrasfdig1" d="M 189,80.37 C 232.6,46.67 352.5,67.06 350.9,124.1 349.5,173.4 311.7,168 312.4,248.1 312.9,301.1 382.5,319.2 368.5,379.1 349.4,460.6 137.7,467.5 117.6,386.3 98.68,309.7 171.5,292.2 183.6,240.1 195.7,188.2 123.8,130.7 189,80.37 Z" />
+							</clipPath>
+						  
+							<path class="formatrasfdig2" d="M 189,80.37 C 243,66.12 307.3,87.28 350.9,124.1 389.3,156.6 417,211.2 418.1,263.4 419.1,305.7 401.8,355.6 368.5,379.1 298.8,428 179.2,446.4 117.6,386.3 65.4,335.3 78.55,230.3 105.5,160.5 119.7,123.6 152.6,89.85 189,80.37 Z" />
+						  </svg>
 					</div>
 				</div>
 			</div>
