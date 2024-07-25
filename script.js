@@ -40,6 +40,56 @@ function loco() {
 };
 loco();
 
+function navAnime() {
+    let activeItemIndicator = CSSRulePlugin.getRule(".menu-item p#active::after");
+    const toggleButton = document.querySelector(".burger");
+
+    let isopen = false;
+
+    gsap.set(".menu-item p", { y: 225 });
+
+    const timeline = gsap.timeline({ paused: true });
+
+    timeline.to(".overlayNav", {
+        duration: 1.5,
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        ease: 'power4.inOut'
+    });
+
+    timeline.to(".menu-item p", {
+        duration: 1.5,
+        y: 0,
+        stagger: 0.2,
+        ease: "power4.inOut"
+
+    }, "-=1");
+
+    timeline.to(activeItemIndicator, {
+        width: "100%",
+        duration: 1,
+           ease: "power4.inOut",
+        // delay: 0.5,
+
+    }, "<");
+
+
+    toggleButton.addEventListener("click", function () {
+        if (isopen) {
+            timeline.reverse();
+            // isopen = false;
+            console.log('hello')
+            
+        } else {
+            console.log('he')
+            timeline.play();
+            // isopen = true;
+        }
+        isopen = !isopen;
+    })
+};
+
+navAnime();
+
 // Page 1 Canvas
 function page1Canvas() {
     const canvas = document.querySelector("#overlay canvas");
@@ -246,13 +296,24 @@ function page1Canvas() {
                 render();
                 const progress = self.progress;
                 console.log(progress)
+                console.log(100 - progress *1000 + "%")
                 var tl = gsap.timeline();
-                gsap.to("#canvasOverlay", {
-                    opacity: progress,
-                    backgroundColor: `rgba(0, 0, 0, ${progress})`,
+               tl.to("#page1Text h1", {
+                    y: progress * -400 + "%",
+                    opacity: 100 - progress *400 + "%",
                     duration: 0,
                     overwrite: true
-                })
+                }, 'a')
+ 
+                tl.to("#canvasOverlay", {
+                    // y: progress * -40 + "%",
+                    backgroundColor: `rgba(20, 20, 20, ${progress/2} )`,
+                    // opacity: 100 - progress *400 + "%",
+                    // backgroundColor: `rgba(20, 20, 20, ${progress})`,
+                    duration: 0,
+                    // delay: 1,
+                    overwrite: true
+                }, 'a')
             }
 
 
@@ -298,165 +359,143 @@ function page1Canvas() {
 
 };
 
-// menu loader animation
-function menuLoadAnimation() {
-	const openMenu = document.querySelector('#load-menu');
-	const closeMenu = document.querySelector('#close-menu');
-	const plane = document.querySelector('#load-plane');
-	const dropDownMenu = document.querySelector('#drop-down-menu');
-
-	const tl = gsap.timeline();
-
-	openMenu.addEventListener('click', function () {
-		gsap.to(plane, {
-			x: -window.innerWidth * 3,
-			y: window.innerHeight * 2,
-			ease: 'power5.inOut',
-			duration: 2,
-		});
-		tl.to(dropDownMenu, {
-			duration: 0.2,
-			delay: 0.4,
-			// x: '0%',
-			y: '100%',
-			// ease: 'power5.in',
-			onComplete: function () {
-				gsap.to(plane, { delay: 1, opacity: 0 });
-			},
-		});
-	});
-
-	closeMenu.addEventListener('click', function () {
-		tl.to(dropDownMenu, {
-			duration: 0.2,
-			// x: '100%',
-			y: '0%',
-			ease: 'linear',
-		}).to(plane, {
-			duration: 1,
-			// x: window.innerWidth * 2, y: -window.innerHeight * 4,
-			// x: window.innerHeight, y: -window.innerWidth,
-			x: '100%',
-			y: '-220%',
-			onComplete: function () {
-				gsap.to(plane, { opacity: 1 });
-			},
-		});
-	});
-
-	//when esc key is clicked , menu will close
-	document.addEventListener('keydown', function (event) {
-		if (event.key === 'Escape') {
-			tl.to(dropDownMenu, {
-				duration: 0.2,
-				// x: '100%',
-				y: '0%',
-				ease: 'linear',
-			}).to(plane, {
-				duration: 1,
-				// x: window.innerWidth * 2, y: -window.innerHeight * 4,
-				// x: window.innerHeight, y: -window.innerWidth,
-				x: '100%',
-				y: '-220%',
-				onComplete: function () {
-					gsap.to(plane, { opacity: 1 });
-				},
-			});
-		}
-	});
-
-	//when any link is clicked , menu will close
-	document.querySelectorAll('.menu-links a').forEach((link) => {
-		link.addEventListener('click', function () {
-			tl.to(dropDownMenu, {
-				duration: 0.2,
-				// x: '100%',
-				y: '0%',
-				ease: 'linear',
-			}).to(plane, {
-				duration: 1,
-				// x: window.innerWidth * 2, y: -window.innerHeight * 4,
-				// x: window.innerHeight, y: -window.innerWidth,
-				x: '100%',
-				y: '-220%',
-				onComplete: function () {
-					gsap.to(plane, { opacity: 1 });
-				},
-			});
-		});
-	});
-
-	const linksarr = document.querySelectorAll(
-		'#drop-down-menu #menu-blocks .menu-links a'
-	);
-
-	linksarr.forEach((link) => {
-		link.addEventListener('mouseenter', () => {
-			gsap.to(link, { rotationX: 360, duration: 1, ease: 'power3.out' });
-		});
-
-		link.addEventListener('mouseleave', () => {
-			gsap.to(link, { rotationX: 0, duration: 1, ease: 'power3.out' });
-		});
-	});
-}
-menuLoadAnimation();
-
 page1Canvas();
 
 // Page 2 Animation
 function page1Anime() {
-    
+    var clutter = "";
+var pg1H1 = document.querySelectorAll("#page1Text h1");
+
+pg1H1.forEach(function (e){
+    gsap.from(e,{
+        y:400,
+        rotate: "30deg",
+        stagger:2,
+        duration:1.2,
+        // delay:2  
+});
+});
+
+
 }
+page1Anime()
 function page2() {
-    const videoContainer = document.querySelector('#video-container');
-    const video = document.querySelector('video');
-    const thumbnail = document.querySelector('#thumbnail');
-    const customCursor = document.querySelector('#custom-cursor');
+    var videoImage = document.querySelector("#video-container img")
+    var videoVideo = document.querySelector("#video-container video")
 
-    videoContainer.addEventListener("mousemove", function (dets) {
-        gsap.to(customCursor, {
-            top: dets.y,
-            left: dets.x
-        })
-    });
+    var flag = 0
+    var videoC = document.querySelector("#video-container")
+    videoC.addEventListener("mouseenter", function () {
+   var mouse = document.querySelector(".mousefollower");
+    })
 
-    videoContainer.addEventListener("mouseenter", function () {
-        gsap.to(customCursor, {
-            duration: 0.2,
+    videoC.addEventListener("mouseenter", function () {
+        gsap.to("#play-btn", {
             opacity: 1,
-            scale: 1,
-            transform: `translate(-50%, -50%) scale(1)` // Center and scale the cursor
-        });
+            scale: 1
+        })
+        // gsap.to(".mousefollower", {
+        //     opacity: 0
+        // })
+mouse.innerHTML = `<div id="play-btn">
+						<i class="ri-play-fill"></i>
+					</div>`
+    })
+    videoC.addEventListener("mouseleave", function () {
 
-    });
-
-    videoContainer.addEventListener("mouseleave", function () {
-        gsap.to(customCursor, {
-            duration: 0.2,
+        gsap.to("#play-btn", {
             opacity: 0,
-            scale: 0,
-            transform: `translate(-50%, -50%) scale(0)` // Center and scale down the cursor
-        });
-    });
+            scale: 0
+        })
+        mouse.innerHTML = `<div id="play-btn">
+						<i class="ri-play-fill"></i>
+					</div>`
+    })
 
-    videoContainer.addEventListener('click', () => {
-        if (video.paused) {
-            video.play();
-            thumbnail.classList.add('hidden');
-            customCursor.innerHTML = `<h1>Pause</h1>`;
+
+    videoC.addEventListener("click", function () {
+        if (flag == 0) {
+
+            gsap.to(videoVideo, {
+                opacity: 1
+            })
+            // gsap.to(videoImage, {
+            //     opacity: 0
+            // })
+
+            gsap.to("#play-btn", {
+                scale: 0.8
+            })
+            document.querySelector("#play-btn").innerHTML = '<i class="ri-pause-line"></i>'
+            videoVideo.play()
+            flag = 1
         } else {
-            video.pause();
-            thumbnail.classList.remove('hidden');
-            customCursor.innerHTML = `<h1>Play</h1>`;
-        }
-    });
+            gsap.to(videoVideo, {
+                opacity: 0
+            })
+            gsap.to("#play-btn", {
+                scale: 1
+            })
+            document.querySelector("#play-btn").innerHTML = '<i class="ri-play-fill"></i>'
 
-    // Initialize cursor text
-    customCursor.innerHTML = `<h1>Play</h1>`;
+            videoVideo.pause()
+            flag = 0
+        }
+    })
+
 };
 
-page2();
+// page2();
+
+function page3Anime() {
+    document.querySelectorAll('.card').forEach(card => {
+        const imageContainer = card.querySelector('.image-container');
+        const images = imageContainer.querySelectorAll('img');
+        const newImageUrl = 'url(./src/final truck.png)'; // Replace with your desired image URL
+
+        // Set the background image of the pseudo-element
+        imageContainer.style.setProperty('--bg-image', newImageUrl);
+
+        card.addEventListener('mouseenter', () => {
+            gsap.to(images, { x: '200%', y: '200%', duration: 0.3 });
+            gsap.to(imageContainer, { '--pseudo-opacity': 1, duration: 0.3 });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            gsap.to(images, { x: '0%', y: '0%', duration: 0.3 });
+            gsap.to(imageContainer, { '--pseudo-opacity': 0, duration: 0.3 });
+        });
+    });
+
+};
+// page3Anime();
+function SheryAnimation() {
+    Shery.mouseFollower({
+        //Parameters are optional
+    });
+    Shery.makeMagnet(".arrow" /* Element to target.*/, {
+        //Parameters are optional.
+        ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+        duration: 1,
+    });
+    Shery.makeMagnet(".burger", ".menu-item p", );
+    Shery.makeMagnet("#logo img" );
+    Shery.imageMasker("#video-container" /* Element to target.*/, {
+        //Parameters are optional.
+        mouseFollower: true,
+        text: "Click",
+        ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+        duration: 1,
+      });
+    // Shery.imageEffect("#video-container", {
+    //     style: 6,
+    //     debug: true,
+    //     gooey: true,
+    //   });
+}
+
+
+SheryAnimation()
 
 
 // Page 5 Animation
