@@ -77,10 +77,8 @@ function navAnime() {
         if (isopen) {
             timeline.reverse();
             // isopen = false;
-            console.log('hello')
             
         } else {
-            console.log('he')
             timeline.play();
             // isopen = true;
         }
@@ -295,8 +293,6 @@ function page1Canvas() {
             onUpdate: (self) => {
                 render();
                 const progress = self.progress;
-                console.log(progress)
-                console.log(100 - progress *1000 + "%")
                 var tl = gsap.timeline();
                tl.to("#page1Text h1", {
                     y: progress * -400 + "%",
@@ -389,55 +385,52 @@ function page2() {
    var mouse = document.querySelector(".mousefollower");
     })
 
-    videoC.addEventListener("mouseenter", function () {
-        gsap.to("#play-btn", {
-            opacity: 1,
-            scale: 1
-        })
-        // gsap.to(".mousefollower", {
-        //     opacity: 0
-        // })
-mouse.innerHTML = `<div id="play-btn">
-						<i class="ri-play-fill"></i>
-					</div>`
+    var tlpage2 = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#page2",
+            scroller: "#main",
+            start: "top 80%",
+            end: "top 10%",
+            scrub:true
+            // toggleActions: "play none none pause"
+        }
     })
-    videoC.addEventListener("mouseleave", function () {
-
-        gsap.to("#play-btn", {
-            opacity: 0,
-            scale: 0
-        })
-        mouse.innerHTML = `<div id="play-btn">
-						<i class="ri-play-fill"></i>
-					</div>`
+    tlpage2.from('#page2Overlay h1',{
+        x: -200,
+        opacity: 0,
+        duration: 1,
+        // ease: "ela/stic.inOut(1.5)",
+        stagger: 0.2,
+        delay: 0.5,
+   
+    }).from(videoC,{
+        y: 200,
+        opacity: 0,
+        duration: 1,
+        // ease: "elastic.inOut(1.5)",
+        stagger: 0.2,
+        delay: 0.5,
+        
     })
 
 
     videoC.addEventListener("click", function () {
         if (flag == 0) {
-
+            flag = 1
             gsap.to(videoVideo, {
                 opacity: 1
             })
-            // gsap.to(videoImage, {
-            //     opacity: 0
-            // })
-
-            gsap.to("#play-btn", {
-                scale: 0.8
+            gsap.to(videoImage, {
+                opacity: 0
             })
-            document.querySelector("#play-btn").innerHTML = '<i class="ri-pause-line"></i>'
             videoVideo.play()
-            flag = 1
         } else {
+            gsap.to(videoImage, {
+                opacity: 1
+            })
             gsap.to(videoVideo, {
                 opacity: 0
             })
-            gsap.to("#play-btn", {
-                scale: 1
-            })
-            document.querySelector("#play-btn").innerHTML = '<i class="ri-play-fill"></i>'
-
             videoVideo.pause()
             flag = 0
         }
@@ -445,30 +438,50 @@ mouse.innerHTML = `<div id="play-btn">
 
 };
 
-// page2();
+page2();
 
 function page3Anime() {
-    document.querySelectorAll('.card').forEach(card => {
-        const imageContainer = card.querySelector('.image-container');
-        const images = imageContainer.querySelectorAll('img');
-        const newImageUrl = 'url(./src/final truck.png)'; // Replace with your desired image URL
+    var tlpage3 = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#page3",
+            scroller: "#main",
+            start: "top 40%",
+            end: "top 10%",
+            scrub:true
+            // toggleActions: "play none none pause"
+        }
+    })
+    tlpage3.to('#page3',{
+        backgroundColor: "#FFCC00",
+        duration: 1,
+        // ease: "ela/stic.inOut(1.5)",
+        stagger: 0.2,
+        delay: 0.5,
+   
+    }, "a")
+  .from('#page3 h1',{
+        x: -200,
+        opacity: 0,
+        duration: 1,
+        // ease: "ela/stic.inOut(1.5)",
+        stagger: 0.2,
+        delay: 0.5,
+   
+    }, "a")
+    document.querySelectorAll('.card').forEach((card)=> {
+        tlpage3.from(card,{
 
-        // Set the background image of the pseudo-element
-        imageContainer.style.setProperty('--bg-image', newImageUrl);
-
-        card.addEventListener('mouseenter', () => {
-            gsap.to(images, { x: '200%', y: '200%', duration: 0.3 });
-            gsap.to(imageContainer, { '--pseudo-opacity': 1, duration: 0.3 });
-        });
-
-        card.addEventListener('mouseleave', () => {
-            gsap.to(images, { x: '0%', y: '0%', duration: 0.3 });
-            gsap.to(imageContainer, { '--pseudo-opacity': 0, duration: 0.3 });
-        });
+            opacity: 0,
+            duration: 1.5,
+            // ease: "elastic.inOut(1.5)",
+            stagger: 2,
+            delay: 0.5,
+            
+        })
     });
 
 };
-// page3Anime();
+page3Anime();
 function SheryAnimation() {
     Shery.mouseFollower({
         //Parameters are optional
@@ -484,14 +497,16 @@ function SheryAnimation() {
         //Parameters are optional.
         mouseFollower: true,
         text: "Click",
+        fontSize: "2rem",
         ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+        // scale: false,
         duration: 1,
       });
-    // Shery.imageEffect("#video-container", {
-    //     style: 6,
-    //     debug: true,
-    //     gooey: true,
-    //   });
+    Shery.imageEffect("#video-container", {
+        style: 6,
+        debug: true,
+        gooey: true,
+      });
 }
 
 
