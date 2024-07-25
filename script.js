@@ -67,7 +67,7 @@ function navAnime() {
     timeline.to(activeItemIndicator, {
         width: "100%",
         duration: 1,
-           ease: "power4.inOut",
+        ease: "power4.inOut",
         // delay: 0.5,
 
     }, "<");
@@ -77,7 +77,7 @@ function navAnime() {
         if (isopen) {
             timeline.reverse();
             // isopen = false;
-            
+
         } else {
             timeline.play();
             // isopen = true;
@@ -294,16 +294,16 @@ function page1Canvas() {
                 render();
                 const progress = self.progress;
                 var tl = gsap.timeline();
-               tl.to("#page1Text h1", {
+                tl.to("#page1Text h1", {
                     y: progress * -400 + "%",
-                    opacity: 100 - progress *400 + "%",
+                    opacity: 100 - progress * 400 + "%",
                     duration: 0,
                     overwrite: true
                 }, 'a')
- 
+
                 tl.to("#canvasOverlay", {
                     // y: progress * -40 + "%",
-                    backgroundColor: `rgba(20, 20, 20, ${progress/2} )`,
+                    backgroundColor: `rgba(20, 20, 20, ${progress / 2} )`,
                     // opacity: 100 - progress *400 + "%",
                     // backgroundColor: `rgba(20, 20, 20, ${progress})`,
                     duration: 0,
@@ -359,18 +359,56 @@ page1Canvas();
 
 // Page 2 Animation
 function page1Anime() {
-    var clutter = "";
-var pg1H1 = document.querySelectorAll("#page1Text h1");
 
-pg1H1.forEach(function (e){
-    gsap.from(e,{
-        y:400,
-        rotate: "30deg",
-        stagger:2,
-        duration:1.2,
-        // delay:2  
-});
-});
+    var loader = gsap.timeline()
+
+    loader.to("#loader img", {
+        // height: 0,
+        opacity:0,
+        y: "-100%",
+        duration: 0.8,
+        delay: 0.5
+    })
+    .to("#loader1", {
+        height: 0,
+        duration: 0.8,
+        delay: 0.5
+    })
+        .to("#loader2", {
+            height: 0,
+            duration: 0.8,
+        }, "-=0.3")
+        .to("#loader3", {
+            height: 0,
+            duration: 0.8,
+        }, "-=1")
+        .to("#loader4", {
+            height: 0,
+            duration: 0.8,
+        }, "-=0.7")
+        .to("#loader", {
+            top: "-100vh",
+            duration: 0.1
+        })
+        .from("nav", {
+            // top: "",
+            y: -200,
+            opacity: 0,
+            duration: 1
+        }, "aaa")
+
+    var clutter = "";
+    var pg1H1 = document.querySelectorAll("#page1Text h1");
+
+    pg1H1.forEach(function (e) {
+        loader.from(e, {
+            y: 400,
+            rotate: "30deg",
+            stagger: 2,
+            duration: 1.2,
+            // delay:2  
+        }, "aaa");
+    });
 
 
 }
@@ -382,7 +420,7 @@ function page2() {
     var flag = 0
     var videoC = document.querySelector("#video-container")
     videoC.addEventListener("mouseenter", function () {
-   var mouse = document.querySelector(".mousefollower");
+        var mouse = document.querySelector(".mousefollower");
     })
 
     var tlpage2 = gsap.timeline({
@@ -391,26 +429,26 @@ function page2() {
             scroller: "#main",
             start: "top 80%",
             end: "top 10%",
-            scrub:true
+            scrub: true
             // toggleActions: "play none none pause"
         }
     })
-    tlpage2.from('#page2Overlay h1',{
+    tlpage2.from('#page2Overlay h1', {
         x: -200,
         opacity: 0,
         duration: 1,
         // ease: "ela/stic.inOut(1.5)",
         stagger: 0.2,
         delay: 0.5,
-   
-    }).from(videoC,{
+
+    }).from(videoC, {
         y: 200,
         opacity: 0,
         duration: 1,
         // ease: "elastic.inOut(1.5)",
         stagger: 0.2,
         delay: 0.5,
-        
+
     })
 
 
@@ -447,36 +485,36 @@ function page3Anime() {
             scroller: "#main",
             start: "top 40%",
             end: "top 10%",
-            scrub:true
+            scrub: true
             // toggleActions: "play none none pause"
         }
     })
-    tlpage3.to('#page3',{
+    tlpage3.to('#main', {
         backgroundColor: "#FFCC00",
-        duration: 1,
+        duration: 5,
         // ease: "ela/stic.inOut(1.5)",
         stagger: 0.2,
         delay: 0.5,
-   
+
     }, "a")
-  .from('#page3 h1',{
-        x: -200,
-        opacity: 0,
-        duration: 1,
-        // ease: "ela/stic.inOut(1.5)",
-        stagger: 0.2,
-        delay: 0.5,
-   
-    }, "a")
-    document.querySelectorAll('.card').forEach((card)=> {
-        tlpage3.from(card,{
+        .from('#page3 h1', {
+            x: -200,
+            opacity: 0,
+            duration: 1,
+            // ease: "ela/stic.inOut(1.5)",
+            stagger: 0.2,
+            delay: 0.5,
+
+        }, "a")
+    document.querySelectorAll('.card').forEach((card) => {
+        tlpage3.from(card, {
 
             opacity: 0,
             duration: 1.5,
             // ease: "elastic.inOut(1.5)",
             stagger: 2,
             delay: 0.5,
-            
+
         })
     });
 
@@ -485,14 +523,16 @@ page3Anime();
 function SheryAnimation() {
     Shery.mouseFollower({
         //Parameters are optional
+        ease: "cubic-bezier(1,-0.7,1,-0.51)",
+
     });
     Shery.makeMagnet(".arrow" /* Element to target.*/, {
         //Parameters are optional.
         ease: "cubic-bezier(0.23, 1, 0.320, 1)",
         duration: 1,
     });
-    Shery.makeMagnet(".burger", ".menu-item p", );
-    Shery.makeMagnet("#logo img" );
+    Shery.makeMagnet(".burger", ".menu-item p",);
+    Shery.makeMagnet("#logo img", ".button-confirm");
     Shery.imageMasker("#video-container" /* Element to target.*/, {
         //Parameters are optional.
         mouseFollower: true,
@@ -501,20 +541,17 @@ function SheryAnimation() {
         ease: "cubic-bezier(0.23, 1, 0.320, 1)",
         // scale: false,
         duration: 1,
-      });
-    Shery.imageEffect("#video-container", {
-        style: 6,
-        debug: true,
-        gooey: true,
-      });
+    });
+    // Shery.imageEffect("#video-container", {
+    //     style: 6,
+    //     debug: true,
+    //     gooey: true,
+    //   });
 }
-
-
 SheryAnimation()
 
-
-// Page 5 Animation
-function page5Animation() {
+// Page 4 Animation
+function page4Animation() {
     gsap.from("#container", {
         opacity: 0,
         y: 200,
@@ -527,10 +564,10 @@ function page5Animation() {
             scrub: true,
 
             scroller: "#main",
-            markers: true,
+            // markers: true,
         }
     }
     )
 
 }
-page5Animation();
+page4Animation();

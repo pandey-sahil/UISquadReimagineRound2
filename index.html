@@ -14,6 +14,16 @@
 </head>
 
 <body>
+	<div id="loader">
+		<!-- <video src="./src/ezgif-1-0d4b9ae578.mp4 " autoplay loop muted></video> -->
+		<div class="boxes" id="loader1"></div>
+		<div class="boxes" id="loader2">
+			<img src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg" alt="">
+		</div>
+		<div class="boxes" id="loader3"></div>
+		<div class="boxes" id="loader4"></div>
+	</div>
+
 
 	<div class="navWrap">
 		<nav>
@@ -46,14 +56,14 @@
 		<div id="page1">
 
 			<div id="overlay">
-				<canvas data-scroll-speed="-6"  class="h-full w-full relative"></canvas>
-				<div id="canvasOverlay" >
+				<canvas data-scroll-speed="-6" class="h-full w-full relative"></canvas>
+				<div id="canvasOverlay">
 					<div id="page1Text" class="px-[10rem] text-center relative py-[15rem] tracking-tighter">
-						<div class="flex items-end tracking-tighter justify-center gap-2 overflow-hidden">
+						<div class="flex items-end tracking-tighter justify-center gap-2 ">
 							<h1 class="text-[4rem] leading-none text-center relative">Delivering </h1>
 							<h1 class="text-[6.5rem] leading-none text-center relative"> Excellence</h1>
 						</div>
-						<div class="flex items-end tracking-tighter justify-center gap-2 overflow-hidden">
+						<div class="flex items-end tracking-tighter justify-center gap-2 ">
 							<h1 class="text-[6.5rem] leading-none text-center relative">Across </h1>
 							<h1 class="text-[4rem] leading-none text-center relative">the Globe</h1>
 
@@ -71,9 +81,10 @@
 			<div id="page2Overlay" class="p-10 justify-between gap-16">
 				<h1 class="text-[8rem] leading-none">Know More <br> About DHL <br> Services</h1>
 			</div>
-			<div id="video-container" >
+			<div id="video-container">
 
-				<img data-scroll data-scroll-speed="-4" src="https://images.unsplash.com/photo-1631419844013-4cdd096678ea?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+				<img data-scroll data-scroll-speed="-4"
+					src="https://images.unsplash.com/photo-1631419844013-4cdd096678ea?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 					alt="">
 				<video loop src="./src/DHLExpressExplanationAnimation.mp4"></video>
 			</div>
@@ -167,21 +178,18 @@
 
 			</div>
 		</div>
-		<div class="page5 flex items-center justify-center min-h-screen bg-gray-100">
-			<div id="container" class="w-full max-w-xl p-8 bg-white rounded-lg shadow-lg text-center">
-				<h1 class="text-4xl flex justify-start font-bold mb-4">
+	
+		<div class="page4 flex items-center justify-center min-h-screen bg-gray-100">
+
+			<form class="form">
+				<h1 class="text-4xl flex justify-start text-[#e73939] font-bold mb-4">
 					Track Your Shipment Now
 				</h1>
-				<form>
-					<input type="text" placeholder="Tracking Number(s)"
-						class="w-80 px-4 py-2 mb-4 border border-zinc-400 flex justify-start rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-						required />
-					<button type="submit"
-						class="btn-animate w-40 px-4 py-2 text-black bg-zinc-300 pl-7 flex justify-start align-center rounded-lg hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
-						TRACK NOW
-					</button>
-				</form>
-			</div>
+				<input type="text" placeholder="Enter Your Order Id" name="email" class="input">
+				<button class="button-confirm">Track →</button>
+			</form>
+			</form>
+
 		</div>
 		<div class="footer">
 			<div class="waves">
@@ -219,7 +227,7 @@
 
 	<!-- Locomotive cdn -->
 	<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 	<!-- GSAP and Scroll Trigger cdn -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
 		integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
